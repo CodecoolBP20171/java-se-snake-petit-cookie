@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="904e52c8-83bd-4e4d-83a4-70307a317227" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/codecool/snake/Game.java" afterPath="$PROJECT_DIR$/src/com/codecool/snake/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/codecool/snake/GameLoop.java" afterPath="$PROJECT_DIR$/src/com/codecool/snake/GameLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/codecool/snake/Globals.java" afterPath="$PROJECT_DIR$/src/com/codecool/snake/Globals.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameLoop.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameLoop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/codecool/snake/GameLoop.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="434">
@@ -68,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/codecool/snake/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
-              <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+              <caret line="30" column="64" lean-forward="false" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -122,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/com/codecool/snake/entities/GameEntity.java" />
         <option value="$PROJECT_DIR$/src/com/codecool/snake/entities/Interactable.java" />
         <option value="$PROJECT_DIR$/src/com/codecool/snake/Globals.java" />
-        <option value="$PROJECT_DIR$/src/com/codecool/snake/Game.java" />
         <option value="$PROJECT_DIR$/src/com/codecool/snake/GameLoop.java" />
+        <option value="$PROJECT_DIR$/src/com/codecool/snake/Game.java" />
       </list>
     </option>
   </component>
@@ -352,7 +350,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6096000" />
+    <option name="totallyTimeSpent" value="6343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -757,18 +755,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/codecool/snake/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/codecool/snake/GameLoop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="23" column="9" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/codecool/snake/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="30" column="64" lean-forward="false" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
           <folding />
         </state>
       </provider>

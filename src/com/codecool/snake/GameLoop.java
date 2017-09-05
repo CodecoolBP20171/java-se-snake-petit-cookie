@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.Dissapearable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import javafx.animation.AnimationTimer;
@@ -14,6 +15,10 @@ public class GameLoop extends AnimationTimer {
                 if (gameObject instanceof Animatable) {
                     Animatable animObject = (Animatable) gameObject;
                     animObject.step();
+                }
+                if(gameObject instanceof Dissapearable) {
+                    Dissapearable dissapearableObject = (Dissapearable) gameObject;
+                    dissapearableObject.step(now);
                 }
             }
             Globals.gameObjects.addAll(Globals.newGameObjects);

@@ -17,7 +17,8 @@ public class Globals {
 
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
-    public static Image simpleEnemy = new Image("simple_enemy.png");
+    public static Image potHoleEnemy = new Image("pothole_enemy.png");
+    public static Image rainCloudEnemy = new Image("raincloud_enemy.png");
     public static Image powerupCookie = new Image("powerup_cookie.png");
     public static Image powerupGrandma = new Image("powerup_grandma.png");
     public static Image powerupCustomer = new Image("powerup_customer.png");
@@ -45,15 +46,6 @@ public class Globals {
 
     public static void removeGameObject(GameEntity toRemove) {
         oldGameObjects.add(toRemove);
-    }
-
-    public static GameEntity getSnakeHead() {
-        for(GameEntity entity : gameObjects){
-            if(entity instanceof SnakeHead) {
-                return entity;
-            }
-        }
-        return null;
     }
 
     public static List<GameEntity> getGameObjects() {

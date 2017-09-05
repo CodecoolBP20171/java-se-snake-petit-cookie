@@ -10,6 +10,10 @@ import javafx.scene.layout.Pane;
 public class Game extends Pane {
 
     public Game() {
+        init();
+    }
+
+    private void init() {
         new SnakeHead(this, 500, 500);
 
         new SimpleEnemy(this);
@@ -22,6 +26,7 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
     }
+
 
     public void start() {
         Scene scene = getScene();
@@ -60,16 +65,6 @@ public class Game extends Pane {
         for (GameEntity gameEntity : Globals.gameObjects) {
             gameEntity.destroy();
         }
-        new SnakeHead(this, 500, 500);
-
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
+        init();
     }
 }

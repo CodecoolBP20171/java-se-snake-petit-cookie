@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -10,9 +11,9 @@ import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float speed = 2;
-    private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
+    private float speed = 2;
+    private float turnRate = 2;
     private int health;
 
     public SnakeHead(Pane pane, int xc, int yc) {
@@ -22,6 +23,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         health = 100;
         tail = this;
         setImage(Globals.snakeHead);
+        Globals.snakeHeadEntity = this;
         pane.getChildren().add(this);
 
         addPart(4);
@@ -66,7 +68,22 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
+    public void removePart(int numParts) {
+        for (int i = 0; i < numParts; i++) {
+            if(tail instanceof SnakeBody){
+                GameEntity oldPart = ((SnakeBody) tail).getGameParent();
+                tail.destroy();
+                tail = oldPart;
+            }
+        }
+    }
+
     public void changeHealth(int diff) {
         health += diff;
+    }
+
+    public void changeSpeed(int diff) {
+        speed += diff;
+        turnRate += diff;
     }
 }

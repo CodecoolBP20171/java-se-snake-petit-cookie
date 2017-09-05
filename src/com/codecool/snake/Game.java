@@ -8,13 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 public class Game extends Pane {
+    SnakeHead snakeHead;
 
     public Game() {
         init();
     }
 
     private void init() {
-        new SnakeHead(this, 500, 500);
+        snakeHead = new SnakeHead(this, 500, 500);
 
         new SimpleEnemy(this);
         new SimpleEnemy(this);
@@ -66,5 +67,9 @@ public class Game extends Pane {
             gameEntity.destroy();
         }
         init();
+    }
+
+    public int getSnakeHealth() {
+        return  snakeHead.getHealth();
     }
 }

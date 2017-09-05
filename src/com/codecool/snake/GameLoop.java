@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 
 public class GameLoop extends AnimationTimer {
@@ -14,6 +15,10 @@ public class GameLoop extends AnimationTimer {
                 if (gameObject instanceof Animatable) {
                     Animatable animObject = (Animatable) gameObject;
                     animObject.step();
+                }
+                if (gameObject instanceof SnakeHead) {
+                    SnakeHead temp = (SnakeHead) gameObject;
+                    Globals.healthBar.setText("Health: " + temp.getHealth());
                 }
             }
             Globals.gameObjects.addAll(Globals.newGameObjects);

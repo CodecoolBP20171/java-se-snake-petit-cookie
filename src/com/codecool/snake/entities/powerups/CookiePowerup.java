@@ -6,29 +6,26 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-import java.util.Random;
+public class CookiePowerup extends GameEntity implements Interactable {
 
-// a simple powerup that makes the snake grow TODO make other powerups
-public class SimplePowerup extends GameEntity implements Interactable {
+    private final int COOKIEGAIN = 1;
 
-    public SimplePowerup(Pane pane) {
+    public CookiePowerup(Pane pane) {
         super(pane);
-        setImage(Globals.powerupBerry);
+        setImage(Globals.powerupCookie);
         pane.getChildren().add(this);
 
-        Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setRandomPostition();
     }
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.addPart(4);
+        snakeHead.addPart(COOKIEGAIN);
         destroy();
     }
 
     @Override
     public String getMessage() {
-        return "Got power-up :)";
+        return "Picked up cookie.";
     }
 }

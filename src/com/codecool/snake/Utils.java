@@ -1,6 +1,8 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.RandomMoveable;
 import javafx.geometry.Point2D;
+import java.util.Random;
 
 public class Utils {
 
@@ -12,5 +14,16 @@ public class Utils {
         double directionInRadians = directionInDegrees / 180 * Math.PI;
         Point2D heading = new Point2D(length * Math.sin(directionInRadians), - length * Math.cos(directionInRadians));
         return heading;
+    }
+
+    public static Point2D getRandomMoveVector(RandomMoveable randomMoveable) {
+        Random rnd = new Random();
+        if(randomMoveable.getCounter() > randomMoveable.getMaxCounter()) {
+            randomMoveable.resetCounter();
+            randomMoveable.setDirection(rnd.nextDouble() * 360);
+        }
+        randomMoveable.incrementCounter();
+        return directionToVector(randomMoveable.getDirection(), randomMoveable.getSpeed());
+
     }
 }

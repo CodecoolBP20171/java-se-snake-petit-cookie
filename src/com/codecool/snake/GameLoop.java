@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.Dissapearable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -10,7 +11,7 @@ public class GameLoop extends AnimationTimer {
     // This gets called every 1/60 seconds
     @Override
     public void handle(long now) {
-        if(!Globals.paused) {
+        if (!Globals.paused) {
             for (GameEntity gameObject : Globals.gameObjects) {
                 if (gameObject instanceof Animatable) {
                     Animatable animObject = (Animatable) gameObject;
@@ -19,6 +20,10 @@ public class GameLoop extends AnimationTimer {
                 if (gameObject instanceof SnakeHead) {
                     SnakeHead temp = (SnakeHead) gameObject;
                     Globals.healthBar.setText("Health: " + temp.getHealth());
+                }
+                if (gameObject instanceof Dissapearable) {
+                    Dissapearable dissapearableObject = (Dissapearable) gameObject;
+                    dissapearableObject.step(now);
                 }
             }
             Globals.gameObjects.addAll(Globals.newGameObjects);

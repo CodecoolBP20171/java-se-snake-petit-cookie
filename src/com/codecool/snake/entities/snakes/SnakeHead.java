@@ -10,10 +10,10 @@ import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float speed = 2;
-    private static final float turnRate = 2;
     private static final int MAX_HEALTH = 100;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
+    private float speed = 2;
+    private float turnRate = 2;
     private int health;
     private int snakeLength;
 
@@ -81,9 +81,23 @@ public class SnakeHead extends GameEntity implements Animatable {
     public int getHealth() {
         return health;
     }
+    public void removePart(int numParts) {
+        snakeLength -= numParts;
+        for (int i = 0; i < numParts; i++) {
+            if(tail instanceof SnakeBody){
+                GameEntity oldPart = ((SnakeBody) tail).getGameParent();
+                tail.destroy();
+                tail = oldPart;
+            }
+        }
+    }
 
     public void changeHealth(int diff) {
         health += diff;
     }
 
+    public void changeSpeed(int diff) {
+        speed += diff;
+        turnRate += diff;
+    }
 }

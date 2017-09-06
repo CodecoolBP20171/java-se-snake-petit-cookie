@@ -1,6 +1,8 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.CookieMonsterEnemy;
+import com.codecool.snake.entities.enemies.DogEnemy;
 import com.codecool.snake.entities.enemies.PotHoleEnemy;
 import com.codecool.snake.entities.enemies.RainCloudEnemy;
 import com.codecool.snake.entities.powerups.CookiePowerup;
@@ -21,9 +23,9 @@ public class Game extends Pane {
         new SnakeHead(this, 500, 500);
 
         new PotHoleEnemy(this);
-        new PotHoleEnemy(this);
+        new CookieMonsterEnemy(this);
         new RainCloudEnemy(this);
-        new RainCloudEnemy(this);
+        new DogEnemy(this);
 
         new CookiePowerup(this);
         new CustomerPowerup(this);

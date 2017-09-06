@@ -1,12 +1,13 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 // class for holding all static stuff
 public class Globals {
@@ -17,12 +18,15 @@ public class Globals {
 
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
-    public static Image potHoleEnemy = new Image("pothole_enemy.png");
-    public static Image rainCloudEnemy = new Image("raincloud_enemy.png");
+    public static Image potHoleEnemy = new Image("enemy_pothole.png");
+    public static Image rainCloudEnemy = new Image("enemy_raincloud.png");
+    public static Image dogEnemy = new Image("enemy_dog.png");
+    public static Image cookieMonsterEnemy = new Image("enemy_cookiemonster.png");
     public static Image powerupCookie = new Image("powerup_cookie.png");
     public static Image powerupGrandma = new Image("powerup_grandma.png");
     public static Image powerupCustomer = new Image("powerup_customer.png");
     public static Image powerupTricycle = new Image("powerup_tricycle.png");
+
     //.. put here the other images you want to use
 
     public static boolean leftKeyDown;
@@ -50,5 +54,16 @@ public class Globals {
 
     public static List<GameEntity> getGameObjects() {
         return Collections.unmodifiableList(gameObjects);
+    }
+
+    public static double distanceFromSnakeHead(GameEntity entity) {
+        double a = Math.abs(entity.getX() - snakeHeadEntity.getX());
+        double b = Math.abs(entity.getY() - snakeHeadEntity.getY());
+
+        return Math.sqrt(a*a + b*b);
+    }
+
+    public static Point2D vectorToSnakeHead(GameEntity entity) {
+        return new Point2D(snakeHeadEntity.getX() - entity.getX(), snakeHeadEntity.getY() - entity.getY());
     }
 }

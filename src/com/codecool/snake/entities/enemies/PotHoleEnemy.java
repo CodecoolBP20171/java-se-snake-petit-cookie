@@ -7,7 +7,6 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-// a simple enemy TODO make better ones.
 public class PotHoleEnemy extends GameEntity implements Interactable, Dissapearable {
 
     private long deathTime;

@@ -1,13 +1,12 @@
 package com.codecool.snake.entities.enemies;
 
 import com.codecool.snake.Globals;
-import com.codecool.snake.Utils;
 import com.codecool.snake.entities.*;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-public class DogEnemy extends RandomMoveableGameEntity implements Interactable, Animatable {
+public class DogEnemy extends PlayerFollowerGameEntity implements Interactable, Animatable {
 
     private final int HEALTHLOSS = 20;
     private final int FRAMESINONEDIRECTION = 30;
@@ -24,16 +23,7 @@ public class DogEnemy extends RandomMoveableGameEntity implements Interactable, 
 
     @Override
     public void step() {
-        double distance = Globals.distanceFromSnakeHead(this);
-        Point2D heading;
-        if (distance < DANGERDISTANCE) {
-            double ratio = speed / distance;
-
-            heading = Globals.vectorToSnakeHead(this);
-            heading = heading.multiply(ratio);
-        } else {
-            heading = Utils.getRandomMoveVector(this);
-        }
+        Point2D heading = getHeading(DANGERDISTANCE);
         moveEntity(heading);
     }
 

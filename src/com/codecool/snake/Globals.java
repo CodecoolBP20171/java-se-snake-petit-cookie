@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 // class for holding all static stuff
 public class Globals {

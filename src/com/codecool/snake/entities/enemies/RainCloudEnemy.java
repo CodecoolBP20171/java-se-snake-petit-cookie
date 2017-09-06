@@ -12,6 +12,7 @@ public class RainCloudEnemy extends GameEntity implements Interactable, Dissapea
     private long deathTime;
     private final int HEALTHLOSS = 10;
     private final int COOKIELOSS = 1;
+    // 10 seconds (in nano seconds)
     private final long LIFETIME = (long)1E10;
 
     public RainCloudEnemy (Pane pane) {

@@ -11,6 +11,7 @@ public class PotHoleEnemy extends GameEntity implements Interactable, Dissapeara
 
     private long deathTime;
     private final int COOKIELOSS = 1;
+    // 5 seconds (in nano seconds)
     private final long LIFETIME = (long)5E9;
 
     public PotHoleEnemy(Pane pane) {

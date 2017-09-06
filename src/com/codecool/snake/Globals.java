@@ -1,7 +1,6 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
@@ -31,6 +30,9 @@ public class Globals {
     public static GameLoop gameLoop;
 
     public static Label healthBar;
+    public static Label endGameLabel;
+    public static Label infoPanel;
+    public static Label snakeLength;
 
     static {
         gameObjects = new LinkedList<>();

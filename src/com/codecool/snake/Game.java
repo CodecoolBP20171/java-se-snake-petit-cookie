@@ -6,6 +6,7 @@ import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class Game extends Pane {
 
@@ -34,15 +35,25 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:
                     Globals.leftKeyDown = true;
+                    if (Globals.infoPanel.isVisible()) {
+                        Globals.infoPanel.setVisible(false);
+                    }
                     break;
                 case RIGHT:
                     Globals.rightKeyDown = true;
+                    if (Globals.infoPanel.isVisible()) {
+                        Globals.infoPanel.setVisible(false);
+                    }
                     break;
                 case P:
                     Globals.paused = !Globals.paused;
                     break;
                 case R:
                     restart();
+                    break;
+                case Q:
+                    Stage primaryStage = (Stage) getScene().getWindow();
+                    primaryStage.close();
                     break;
             }
         });
@@ -66,6 +77,9 @@ public class Game extends Pane {
             gameEntity.destroy();
         }
         init();
+        Globals.healthBar.setVisible(true);
+        Globals.endGameLabel.setVisible(false);
+        Globals.snakeLength.setVisible(false);
     }
 
 }

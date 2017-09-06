@@ -15,6 +15,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private static final int MAX_HEALTH = 100;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    private int snakeLength;
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -25,6 +26,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         setImage(Globals.snakeHead);
         Globals.snakeHeadEntity = this;
         pane.getChildren().add(this);
+        snakeLength = 0;
 
         addPart(4);
     }
@@ -57,11 +59,20 @@ public class SnakeHead extends GameEntity implements Animatable {
         // check for game over condition
         if (isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
-            Globals.gameLoop.stop();
+            Globals.healthBar.setVisible(false);
+            Globals.endGameLabel.setVisible(true);
+            Globals.infoPanel.setVisible(true);
+            Globals.snakeLength.setText("You had " + snakeLength + " red toy wagons full of cookies");
+            Globals.snakeLength.setVisible(true);
+            for (GameEntity gameEntity : Globals.gameObjects) {
+                gameEntity.destroy();
+            }
+            //Globals.gameLoop.stop();
         }
     }
 
     public void addPart(int numParts) {
+        snakeLength += numParts;
         for (int i = 0; i < numParts; i++) {
             SnakeBody newPart = new SnakeBody(pane, tail);
             tail = newPart;
@@ -75,4 +86,5 @@ public class SnakeHead extends GameEntity implements Animatable {
     public void changeHealth(int diff) {
         health += diff;
     }
+
 }

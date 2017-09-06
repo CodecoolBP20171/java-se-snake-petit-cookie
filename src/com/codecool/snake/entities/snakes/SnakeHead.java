@@ -67,7 +67,6 @@ public class SnakeHead extends GameEntity implements Animatable {
             for (GameEntity gameEntity : Globals.gameObjects) {
                 gameEntity.destroy();
             }
-            //Globals.gameLoop.stop();
         }
     }
 

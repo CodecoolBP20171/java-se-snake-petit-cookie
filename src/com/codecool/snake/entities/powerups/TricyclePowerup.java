@@ -7,6 +7,9 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
 public class TricyclePowerup extends GameEntity implements Interactable {
+
+    private final int SPEEDGAIN = 1;
+
     public TricyclePowerup(Pane pane){
         super(pane);
         setImage(Globals.powerupTricycle);
@@ -18,7 +21,7 @@ public class TricyclePowerup extends GameEntity implements Interactable {
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.changeSpeed(1);
+        snakeHead.changeSpeed(SPEEDGAIN);
         destroy();
     }
 

@@ -9,10 +9,13 @@ import javafx.scene.layout.Pane;
 
 public class DogEnemy extends RandomMoveableGameEntity implements Interactable, Animatable {
 
+    private final int HEALTHLOSS = 20;
+    private final int FRAMESINONEDIRECTION = 30;
+    private final int DANGERDISTANCE = 200;
+
     public DogEnemy (Pane pane) {
         super(pane);
         speed = 1.5;
-
         setImage(Globals.dogEnemy);
         pane.getChildren().add(this);
 
@@ -23,7 +26,7 @@ public class DogEnemy extends RandomMoveableGameEntity implements Interactable, 
     public void step() {
         double distance = Globals.distanceFromSnakeHead(this);
         Point2D heading;
-        if (distance < 200) {
+        if (distance < DANGERDISTANCE) {
             double ratio = speed / distance;
 
             heading = Globals.vectorToSnakeHead(this);
@@ -36,7 +39,7 @@ public class DogEnemy extends RandomMoveableGameEntity implements Interactable, 
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.changeHealth(-20);
+        snakeHead.changeHealth(-HEALTHLOSS);
         destroy();
     }
 
@@ -47,7 +50,7 @@ public class DogEnemy extends RandomMoveableGameEntity implements Interactable, 
 
     @Override
     public int getMaxCounter() {
-        return 30;
+        return FRAMESINONEDIRECTION;
     }
 
 

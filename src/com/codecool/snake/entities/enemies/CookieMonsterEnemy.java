@@ -11,10 +11,13 @@ import javafx.scene.layout.Pane;
 
 public class CookieMonsterEnemy extends RandomMoveableGameEntity implements Interactable, Animatable{
 
+    private final int FRAMESINONEDIRECTION = 30;
+    private final int COOKIELOSS = 4;
+    private final int DANGERDISTANCE = 200;
+
     public CookieMonsterEnemy(Pane pane) {
         super(pane);
         speed = 1.8;
-
         setImage(Globals.cookieMonsterEnemy);
         pane.getChildren().add(this);
 
@@ -25,7 +28,7 @@ public class CookieMonsterEnemy extends RandomMoveableGameEntity implements Inte
     public void step() {
         double distance = Globals.distanceFromSnakeHead(this);
         Point2D heading;
-        if (distance < 250) {
+        if (distance < DANGERDISTANCE) {
             double ratio = speed / distance;
 
             heading = Globals.vectorToSnakeHead(this);
@@ -38,7 +41,7 @@ public class CookieMonsterEnemy extends RandomMoveableGameEntity implements Inte
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(4);
+        snakeHead.removePart(COOKIELOSS);
         destroy();
     }
 
@@ -49,6 +52,6 @@ public class CookieMonsterEnemy extends RandomMoveableGameEntity implements Inte
 
     @Override
     public int getMaxCounter() {
-        return 30;
+        return FRAMESINONEDIRECTION;
     }
 }

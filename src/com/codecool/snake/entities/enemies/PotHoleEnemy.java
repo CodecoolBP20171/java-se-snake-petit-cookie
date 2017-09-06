@@ -11,10 +11,12 @@ import javafx.scene.layout.Pane;
 public class PotHoleEnemy extends GameEntity implements Interactable, Dissapearable {
 
     private long deathTime;
+    private final int COOKIELOSS = 1;
+    private final long LIFETIME = (long)5E9;
 
     public PotHoleEnemy(Pane pane) {
         super(pane);
-        deathTime = System.nanoTime() + (long)5E9;
+        deathTime = System.nanoTime() + LIFETIME;
 
         setImage(Globals.potHoleEnemy);
         pane.getChildren().add(this);
@@ -25,7 +27,7 @@ public class PotHoleEnemy extends GameEntity implements Interactable, Dissapeara
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(1);
+        snakeHead.removePart(COOKIELOSS);
         destroy();
     }
 

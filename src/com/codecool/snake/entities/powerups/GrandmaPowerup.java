@@ -8,6 +8,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 public class GrandmaPowerup extends RandomMoveableGameEntity implements Interactable, Animatable {
+
+    private final int COOKIEGAIN = 2;
+    private final int FRAMESINONEDIRECTION = 60;
+
     public GrandmaPowerup(Pane pane) {
         super(pane);
         speed = 1;
@@ -19,7 +23,7 @@ public class GrandmaPowerup extends RandomMoveableGameEntity implements Interact
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.addPart(2);
+        snakeHead.addPart(COOKIEGAIN);
         destroy();
     }
 
@@ -36,6 +40,6 @@ public class GrandmaPowerup extends RandomMoveableGameEntity implements Interact
 
     @Override
     public int getMaxCounter() {
-        return 60;
+        return FRAMESINONEDIRECTION;
     }
 }

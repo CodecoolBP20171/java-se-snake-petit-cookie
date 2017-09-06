@@ -23,7 +23,7 @@ public class Utils {
             randomMoveable.setDirection(rnd.nextDouble() * 360);
         }
         randomMoveable.incrementCounter();
-        return Utils.directionToVector(randomMoveable.getDirection(), randomMoveable.getSpeed());
+        return directionToVector(randomMoveable.getDirection(), randomMoveable.getSpeed());
 
     }
 }

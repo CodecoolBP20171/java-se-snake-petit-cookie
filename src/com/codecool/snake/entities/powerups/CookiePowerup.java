@@ -8,6 +8,8 @@ import javafx.scene.layout.Pane;
 
 public class CookiePowerup extends GameEntity implements Interactable {
 
+    private final int COOKIEGAIN = 1;
+
     public CookiePowerup(Pane pane) {
         super(pane);
         setImage(Globals.powerupCookie);
@@ -18,7 +20,7 @@ public class CookiePowerup extends GameEntity implements Interactable {
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.addPart(1);
+        snakeHead.addPart(COOKIEGAIN);
         destroy();
     }
 

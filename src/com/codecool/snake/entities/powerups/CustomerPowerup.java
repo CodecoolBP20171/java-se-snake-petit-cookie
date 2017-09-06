@@ -8,6 +8,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 public class CustomerPowerup  extends RandomMoveableGameEntity implements Interactable, Animatable {
+
+    private  final int COOKIELOSS = 1;
+    private final int HEALTHGAIN = 10;
+
     public CustomerPowerup(Pane pane) {
         super(pane);
         speed = 1.5;
@@ -19,8 +23,8 @@ public class CustomerPowerup  extends RandomMoveableGameEntity implements Intera
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(1);
-        snakeHead.changeHealth(10);
+        snakeHead.removePart(COOKIELOSS);
+        snakeHead.changeHealth(HEALTHGAIN);
         destroy();
     }
 

@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -21,7 +22,7 @@ public class Snake extends Application {
     }
 
     private void initHealthBar(Game game) {
-        Globals.healthBar = new Label("Health: " + game.getSnakeHealth());
+        Globals.healthBar = new Label("Health: " + ((SnakeHead) Globals.snakeHeadEntity).getHealth());
         game.getChildren().add(Globals.healthBar);
         Globals.healthBar.setLayoutX(30);
         Globals.healthBar.setLayoutY(30);

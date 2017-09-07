@@ -14,6 +14,11 @@ public class Game extends Pane {
 
     private void init() {
         new SnakeHead(this, 500, 500);
+        Globals.playedCookieMonster = false;
+        Globals.countDogs = 0;
+        Globals.countGrandmas = 0;
+        Globals.countCustomers = 0;
+        Globals.countTricycles = 0;
         Globals.gameOver = false;
     }
 

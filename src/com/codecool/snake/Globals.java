@@ -45,11 +45,11 @@ public class Globals {
     public static Label infoPanel;
     public static Label snakeLength;
 
-    public static boolean playedCookieMonster = false;
-    public static int countDogs = 0;
-    public static int countGrandmas = 0;
-    public static int countCustomers = 0;
-    public static int countTricycles = 0;
+    public static boolean playedCookieMonster;
+    public static int countDogs;
+    public static int countGrandmas;
+    public static int countCustomers;
+    public static int countTricycles;
 
     static {
         gameObjects = new LinkedList<>();

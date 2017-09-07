@@ -15,6 +15,7 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
     public static final double MIN_SPAWN_GAP = 20;
+    public static final double MIN_SPAWN_EDGE_DISTANCE = 30;
     public static final int PLAYER_SPRITE_SIZE = 64;
     public static final int PLAYER_SPRITE_FRAME_COUNT = 9;
 

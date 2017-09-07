@@ -45,9 +45,21 @@ public abstract class GameEntity extends ImageView {
         Random rnd = new Random();
         do {
             setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        } while (Math.abs(getX() - Globals.snakeHeadEntity.getX()) < Globals.MIN_SPAWN_GAP);
+        } while (!isValidX());
         do {
             setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        } while (Math.abs(getY() - Globals.snakeHeadEntity.getY()) < Globals.MIN_SPAWN_GAP);
+        } while (!isValidY());
+    }
+
+    private boolean isValidY() {
+        return Math.abs(getY() - Globals.snakeHeadEntity.getY()) > Globals.MIN_SPAWN_GAP &&
+                getY() > Globals.MIN_SPAWN_EDGE_DISTANCE &&
+                getY() < Globals.WINDOW_HEIGHT - Globals.MIN_SPAWN_EDGE_DISTANCE;
+    }
+
+    private boolean isValidX() {
+        return Math.abs(getX() - Globals.snakeHeadEntity.getX()) > Globals.MIN_SPAWN_GAP &&
+                getX() > Globals.MIN_SPAWN_EDGE_DISTANCE &&
+                getX() < Globals.WINDOW_WIDTH - Globals.MIN_SPAWN_EDGE_DISTANCE;
     }
 }

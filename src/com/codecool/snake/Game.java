@@ -32,6 +32,7 @@ public class Game extends Pane {
         new CustomerPowerup(this);
         new GrandmaPowerup(this);
         new TricyclePowerup(this);
+        setStyle("-fx-background-color: #a8dde5");
     }
 
 

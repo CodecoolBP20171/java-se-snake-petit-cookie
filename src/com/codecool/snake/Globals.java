@@ -32,16 +32,24 @@ public class Globals {
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
     public static boolean paused;
+    public static boolean gameOver;
     public static GameEntity snakeHeadEntity;
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
+    public static Game game;
 
     public static Label healthBar;
     public static Label endGameLabel;
     public static Label infoPanel;
     public static Label snakeLength;
+
+    public static boolean playedCookieMonster = false;
+    public static int countDogs = 0;
+    public static int countGrandmas = 0;
+    public static int countCustomers = 0;
+    public static int countTricycles = 0;
 
     static {
         gameObjects = new LinkedList<>();

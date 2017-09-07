@@ -2,13 +2,14 @@ package com.codecool.snake.entities.enemies;
 
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.Enemies;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.PlayerFollowerGameEntity;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-public class CookieMonsterEnemy extends PlayerFollowerGameEntity implements Interactable, Animatable{
+public class CookieMonsterEnemy extends PlayerFollowerGameEntity implements Interactable, Animatable, Enemies{
 
     private final int FRAMESINONEDIRECTION = 30;
     private final int COOKIELOSS = 4;

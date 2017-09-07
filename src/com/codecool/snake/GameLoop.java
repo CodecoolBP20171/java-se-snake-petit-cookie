@@ -12,13 +12,12 @@ import com.codecool.snake.entities.powerups.TricyclePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 
-import java.util.LinkedList;
 import java.util.Random;
 
 public class GameLoop extends AnimationTimer {
-    private final int maxNumOfInstances = 5;
-    private final int maxNumOfEnemies = 4;
-    private final int maxNumOfPowerUps = 4;
+    private final int MAX_NUM_OF_INSTANCES = 5;
+    private final int MAX_NUM_OF_ENEMIES = 4;
+    private final int MAX_NUM_OF_POWERUPS = 4;
 
     private int countEnemies;
     private int countPowerUps;
@@ -35,50 +34,10 @@ public class GameLoop extends AnimationTimer {
     public void handle(long now) {
 
         if (!Globals.paused && !Globals.gameOver) {
-            countEnemies = 0;
-            countPowerUps = 0;
-            countCookies = 0;
-            countPotholes = 0;
-            countRainClowd = 0;
-            nodog = true;
-            nograndma = true;
-            nocustomer = true;
-            notricycle = true;
+            initVariables();
+            checkEntities(now);
+            spawnMissingEntities();
 
-
-            for (GameEntity gameObject : Globals.gameObjects) {
-                if (gameObject instanceof Animatable) {
-                    Animatable animObject = (Animatable) gameObject;
-                    animObject.step();
-                }
-                if (gameObject instanceof SnakeHead) {
-                    SnakeHead temp = (SnakeHead) gameObject;
-                    Globals.healthBar.setText("Health: " + temp.getHealth());
-                }
-                if (gameObject instanceof Dissapearable) {
-                    Dissapearable dissapearableObject = (Dissapearable) gameObject;
-                    dissapearableObject.step(now);
-                }
-                if (gameObject instanceof Enemies) {
-                    countEnemies++;
-                    countEnemies(gameObject);
-                }
-                if (gameObject instanceof PowerUps) {
-                    countPowerUps++;
-                    countPowerUps(gameObject);
-                }
-            }
-
-            Random tempNum = new Random();
-            while (countEnemies < maxNumOfEnemies) {
-                int enemyTospawn = tempNum.nextInt(maxNumOfEnemies);
-                spawnEnemy(enemyTospawn);
-            }
-
-            while (countPowerUps < maxNumOfPowerUps) {
-                int powerUpTospawn = tempNum.nextInt(maxNumOfPowerUps);
-                spawnPowerUps(powerUpTospawn);
-            }
             Globals.gameObjects.addAll(Globals.newGameObjects);
             Globals.newGameObjects.clear();
 
@@ -87,74 +46,156 @@ public class GameLoop extends AnimationTimer {
         }
     }
 
+    private void spawnMissingEntities() {
+        Random tempNum = new Random();
+        while (countEnemies < MAX_NUM_OF_ENEMIES) {
+            int enemyTospawn = tempNum.nextInt(MAX_NUM_OF_ENEMIES);
+            spawnEnemy(enemyTospawn);
+        }
+
+        while (countPowerUps < MAX_NUM_OF_POWERUPS) {
+            int powerUpTospawn = tempNum.nextInt(MAX_NUM_OF_POWERUPS);
+            spawnPowerUps(powerUpTospawn);
+        }
+    }
+
+    private void checkEntities(long now) {
+        for (GameEntity gameObject : Globals.gameObjects) {
+            if (gameObject instanceof Animatable) {
+                Animatable animObject = (Animatable) gameObject;
+                animObject.step();
+            }
+            if (gameObject instanceof SnakeHead) {
+                SnakeHead temp = (SnakeHead) gameObject;
+                Globals.healthBar.setText("Health: " + temp.getHealth());
+            }
+            if (gameObject instanceof Dissapearable) {
+                Dissapearable dissapearableObject = (Dissapearable) gameObject;
+                dissapearableObject.step(now);
+            }
+            if (gameObject instanceof Enemies) {
+                countEnemies++;
+                countEnemies(gameObject);
+            }
+            if (gameObject instanceof PowerUps) {
+                countPowerUps++;
+                countPowerUps(gameObject);
+            }
+        }
+    }
+
+    private void initVariables() {
+        countEnemies = 0;
+        countPowerUps = 0;
+        countCookies = 0;
+        countPotholes = 0;
+        countRainClowd = 0;
+        nodog = true;
+        nograndma = true;
+        nocustomer = true;
+        notricycle = true;
+    }
+
     private void spawnPowerUps(int powerUpTospawn) {
         switch (powerUpTospawn) {
             case 0:
-            if (countCookies < maxNumOfInstances) {
-                new CookiePowerup(Globals.game);
-                    countCookies++;
-                    countPowerUps++;
-            }
-            break;
+                spawnCookiePowerUp();
+                break;
             case 1:
-            if (nograndma && nocustomer && Globals.countGrandmas < maxNumOfInstances) {
-                new GrandmaPowerup(Globals.game);
-                    nograndma = false;
-                    Globals.countGrandmas++;
-                    countPowerUps++;
-            }
-            break;
+                spawnGrandma();
+                break;
             case 2:
-            if (nograndma && nocustomer && Globals.countCustomers < maxNumOfInstances) {
-                new CustomerPowerup(Globals.game);
-                    nocustomer = false;
-                    Globals.countCustomers++;
-                    countPowerUps++;
-            }
-            break;
+                spawnCustomer();
+                break;
             case 3:
-            if (notricycle && Globals.countTricycles < maxNumOfInstances) {
-                new TricyclePowerup(Globals.game);
-                    notricycle = false;
-                    Globals.countTricycles++;
-                    countPowerUps++;
-            }
-            break;
+                spawnTricycle();
+                break;
 
+        }
+    }
+
+    private void spawnTricycle() {
+        if (notricycle && Globals.countTricycles < MAX_NUM_OF_INSTANCES) {
+            new TricyclePowerup(Globals.game);
+                notricycle = false;
+                Globals.countTricycles++;
+                countPowerUps++;
+        }
+    }
+
+    private void spawnCustomer() {
+        if (nograndma && nocustomer && Globals.countCustomers < MAX_NUM_OF_INSTANCES) {
+            new CustomerPowerup(Globals.game);
+                nocustomer = false;
+                Globals.countCustomers++;
+                countPowerUps++;
+        }
+    }
+
+    private void spawnGrandma() {
+        if (nograndma && nocustomer && Globals.countGrandmas < MAX_NUM_OF_INSTANCES) {
+            new GrandmaPowerup(Globals.game);
+                nograndma = false;
+                Globals.countGrandmas++;
+                countPowerUps++;
+        }
+    }
+
+    private void spawnCookiePowerUp() {
+        if (countCookies < MAX_NUM_OF_INSTANCES) {
+            new CookiePowerup(Globals.game);
+                countCookies++;
+                countPowerUps++;
         }
     }
 
     private void spawnEnemy(int enemyTospawn) {
         switch (enemyTospawn) {
             case 0:
-                if (!Globals.playedCookieMonster) {
-                    new CookieMonsterEnemy(Globals.game);
-                    Globals.playedCookieMonster = true;
-                    countEnemies++;
-                }
+                spawnCookieMonster();
                 break;
             case 1:
-                if (nodog && Globals.countDogs < maxNumOfInstances) {
-                    new DogEnemy(Globals.game);
-                    Globals.countDogs++;
-                    nodog = false;
-                    countEnemies++;
-                }
+                spawnDog();
                 break;
             case 2:
-                if (countPotholes < maxNumOfInstances) {
-                    new PotHoleEnemy(Globals.game);
-                    countPotholes++;
-                    countEnemies++;
-                }
+                spawnPotHole();
                 break;
             case 3:
-                if (countRainClowd < maxNumOfInstances) {
-                    new RainCloudEnemy(Globals.game);
-                    countRainClowd++;
-                    countEnemies++;
-                }
+                spawnRainCloud();
                 break;
+        }
+    }
+
+    private void spawnRainCloud() {
+        if (countRainClowd < MAX_NUM_OF_INSTANCES) {
+            new RainCloudEnemy(Globals.game);
+            countRainClowd++;
+            countEnemies++;
+        }
+    }
+
+    private void spawnPotHole() {
+        if (countPotholes < MAX_NUM_OF_INSTANCES) {
+            new PotHoleEnemy(Globals.game);
+            countPotholes++;
+            countEnemies++;
+        }
+    }
+
+    private void spawnDog() {
+        if (nodog && Globals.countDogs < MAX_NUM_OF_INSTANCES) {
+            new DogEnemy(Globals.game);
+            Globals.countDogs++;
+            nodog = false;
+            countEnemies++;
+        }
+    }
+
+    private void spawnCookieMonster() {
+        if (!Globals.playedCookieMonster) {
+            new CookieMonsterEnemy(Globals.game);
+            Globals.playedCookieMonster = true;
+            countEnemies++;
         }
     }
 

@@ -207,15 +207,12 @@ public class GameLoop extends AnimationTimer {
         }
         if (gameObject instanceof GrandmaPowerup) {
             nograndma = false;
-            Globals.countGrandmas++;
         }
         if (gameObject instanceof CustomerPowerup) {
             nocustomer = false;
-            Globals.countCustomers++;
         }
         if (gameObject instanceof TricyclePowerup) {
             notricycle = false;
-            Globals.countTricycles++;
         }
     }
 
@@ -225,7 +222,6 @@ public class GameLoop extends AnimationTimer {
         }
         if (gameObject instanceof DogEnemy) {
             nodog = false;
-            Globals.countDogs++;
         }
         if (gameObject instanceof PotHoleEnemy) {
             countPotholes++;

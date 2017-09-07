@@ -1,14 +1,6 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.enemies.CookieMonsterEnemy;
-import com.codecool.snake.entities.enemies.DogEnemy;
-import com.codecool.snake.entities.enemies.PotHoleEnemy;
-import com.codecool.snake.entities.enemies.RainCloudEnemy;
-import com.codecool.snake.entities.powerups.CookiePowerup;
-import com.codecool.snake.entities.powerups.CustomerPowerup;
-import com.codecool.snake.entities.powerups.GrandmaPowerup;
-import com.codecool.snake.entities.powerups.TricyclePowerup;
 import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

@@ -3,7 +3,7 @@ package com.codecool.snake.entities.powerups;
 import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.*;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
@@ -22,9 +22,9 @@ public class CustomerPowerup  extends RandomMoveableGameEntity implements Intera
     }
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(COOKIELOSS);
-        snakeHead.changeHealth(HEALTHGAIN);
+    public void apply(GirlScout girlScout) {
+        girlScout.removePart(COOKIELOSS);
+        girlScout.changeHealth(HEALTHGAIN);
         destroy();
     }
 

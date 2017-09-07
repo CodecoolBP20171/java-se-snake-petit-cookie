@@ -9,7 +9,10 @@ import com.codecool.snake.entities.powerups.CookiePowerup;
 import com.codecool.snake.entities.powerups.CustomerPowerup;
 import com.codecool.snake.entities.powerups.GrandmaPowerup;
 import com.codecool.snake.entities.powerups.TricyclePowerup;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.Dissapearable;
+import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.animation.AnimationTimer;
 
 import java.util.Random;
@@ -37,7 +40,6 @@ public class GameLoop extends AnimationTimer {
             initVariables();
             checkEntities(now);
             spawnMissingEntities();
-
             Globals.gameObjects.addAll(Globals.newGameObjects);
             Globals.newGameObjects.clear();
 
@@ -65,8 +67,8 @@ public class GameLoop extends AnimationTimer {
                 Animatable animObject = (Animatable) gameObject;
                 animObject.step();
             }
-            if (gameObject instanceof SnakeHead) {
-                SnakeHead temp = (SnakeHead) gameObject;
+            if (gameObject instanceof GirlScout) {
+                GirlScout temp = (GirlScout) gameObject;
                 Globals.healthBar.setText("Health: " + temp.getHealth());
             }
             if (gameObject instanceof Dissapearable) {

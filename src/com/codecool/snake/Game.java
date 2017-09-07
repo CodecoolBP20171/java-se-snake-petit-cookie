@@ -1,7 +1,15 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.enemies.CookieMonsterEnemy;
+import com.codecool.snake.entities.enemies.DogEnemy;
+import com.codecool.snake.entities.enemies.PotHoleEnemy;
+import com.codecool.snake.entities.enemies.RainCloudEnemy;
+import com.codecool.snake.entities.powerups.CookiePowerup;
+import com.codecool.snake.entities.powerups.CustomerPowerup;
+import com.codecool.snake.entities.powerups.GrandmaPowerup;
+import com.codecool.snake.entities.powerups.TricyclePowerup;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -13,13 +21,14 @@ public class Game extends Pane {
     }
 
     private void init() {
-        new SnakeHead(this, 500, 500);
         Globals.playedCookieMonster = false;
         Globals.countDogs = 0;
         Globals.countGrandmas = 0;
         Globals.countCustomers = 0;
         Globals.countTricycles = 0;
         Globals.gameOver = false;
+        new GirlScout(this, 500, 500);
+        setStyle("-fx-background-color: #a8dde5");
     }
 
 

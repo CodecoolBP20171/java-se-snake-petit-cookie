@@ -2,7 +2,7 @@ package com.codecool.snake.entities.enemies;
 
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.*;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
@@ -28,8 +28,8 @@ public class DogEnemy extends PlayerFollowerGameEntity implements Interactable, 
     }
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.changeHealth(-HEALTHLOSS);
+    public void apply(GirlScout girlScout) {
+        girlScout.changeHealth(-HEALTHLOSS);
         destroy();
     }
 

@@ -39,6 +39,21 @@ public class GirlScout extends GameEntity implements Animatable {
 
     public void step() {
         calculateNewDirection();
+        animate();
+        move();
+        checkCollision();
+        checkGameOver();
+    }
+
+    private void move() {
+        Point2D heading = Utils.directionToVector(dir, speed);
+        setX(getX() + heading.getX());
+        setY(getY() + heading.getY());
+        translateXProperty();
+        translateYProperty();
+    }
+
+    private void animate() {
         int newAnimationDirection = getCurrentAnimationDirection();
         if (newAnimationDirection != animationDirection) {
             animationDirection = newAnimationDirection;
@@ -48,13 +63,9 @@ public class GirlScout extends GameEntity implements Animatable {
         setViewport(view);
         animationFrame++;
         animationFrame %= Globals.PLAYER_SPRITE_FRAME_COUNT;
-        Point2D heading = Utils.directionToVector(dir, speed);
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
-        translateXProperty();
-        translateYProperty();
+    }
 
-        // check if collided with an enemy or a powerup
+    private void checkCollision() {
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 if (entity instanceof Interactable) {
@@ -64,8 +75,9 @@ public class GirlScout extends GameEntity implements Animatable {
                 }
             }
         }
+    }
 
-        // check for game over condition
+    private void checkGameOver() {
         if (isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
             Globals.healthBar.setVisible(false);

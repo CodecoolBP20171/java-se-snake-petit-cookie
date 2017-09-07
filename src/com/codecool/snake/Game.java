@@ -9,7 +9,7 @@ import com.codecool.snake.entities.powerups.CookiePowerup;
 import com.codecool.snake.entities.powerups.CustomerPowerup;
 import com.codecool.snake.entities.powerups.GrandmaPowerup;
 import com.codecool.snake.entities.powerups.TricyclePowerup;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -21,7 +21,7 @@ public class Game extends Pane {
     }
 
     private void init() {
-        new SnakeHead(this, 500, 500);
+        new GirlScout(this, 500, 500);
 
         new PotHoleEnemy(this);
         new CookieMonsterEnemy(this);

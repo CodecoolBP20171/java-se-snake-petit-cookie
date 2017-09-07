@@ -15,9 +15,11 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
     public static final double MIN_SPAWN_GAP = 20;
+    public static final int PLAYER_SPRITE_SIZE = 64;
+    public static final int PLAYER_SPRITE_FRAME_COUNT = 9;
 
-    public static Image snakeHead = new Image("snake_head.png");
-    public static Image snakeBody = new Image("snake_body.png");
+    public static Image playerSprites = new Image("player_sprites.png");
+    public static Image snakeBody = new Image("little_red_wagon.png");
     public static Image potHoleEnemy = new Image("enemy_pothole.png");
     public static Image rainCloudEnemy = new Image("enemy_raincloud.png");
     public static Image dogEnemy = new Image("enemy_dog.png");

@@ -3,7 +3,7 @@ package com.codecool.snake.entities.powerups;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.layout.Pane;
 
 public class CookiePowerup extends GameEntity implements Interactable {
@@ -19,8 +19,8 @@ public class CookiePowerup extends GameEntity implements Interactable {
     }
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.addPart(COOKIEGAIN);
+    public void apply(GirlScout girlScout) {
+        girlScout.addPart(COOKIEGAIN);
         destroy();
     }
 

@@ -6,24 +6,30 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.Pane;
 
-public class SnakeHead extends GameEntity implements Animatable {
+public class GirlScout extends GameEntity implements Animatable {
 
     private static final int MAX_HEALTH = 100;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private float speed = 2;
     private float turnRate = 2;
+    private double dir;
     private int health;
     private int snakeLength;
+    private int animationDirection = 0;
+    private int animationFrame = 0;
 
-    public SnakeHead(Pane pane, int xc, int yc) {
+    public GirlScout(Pane pane, int xc, int yc) {
         super(pane);
         setX(xc);
         setY(yc);
+        setTranslateX(-Globals.PLAYER_SPRITE_SIZE / 2);
+        setTranslateY(-Globals.PLAYER_SPRITE_SIZE / 2);
         health = MAX_HEALTH;
         tail = this;
-        setImage(Globals.snakeHead);
+        setImage(Globals.playerSprites);
         Globals.snakeHeadEntity = this;
         pane.getChildren().add(this);
         snakeLength = 0;
@@ -32,18 +38,21 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
-        double dir = getRotate();
-        if (Globals.leftKeyDown) {
-            dir = dir - turnRate;
+        calculateNewDirection();
+        int newAnimationDirection = getCurrentAnimationDirection();
+        if (newAnimationDirection != animationDirection) {
+            animationDirection = newAnimationDirection;
+            animationFrame = 0;
         }
-        if (Globals.rightKeyDown) {
-            dir = dir + turnRate;
-        }
-        // set rotation and position
-        setRotate(dir);
+        Rectangle2D view = getCurrentFrameView();
+        setViewport(view);
+        animationFrame++;
+        animationFrame %= Globals.PLAYER_SPRITE_FRAME_COUNT;
         Point2D heading = Utils.directionToVector(dir, speed);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+        translateXProperty();
+        translateYProperty();
 
         // check if collided with an enemy or a powerup
         for (GameEntity entity : Globals.getGameObjects()) {
@@ -70,10 +79,22 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
+    private void calculateNewDirection() {
+        if (Globals.leftKeyDown) {
+            dir = dir - turnRate;
+        }
+        if (Globals.rightKeyDown) {
+            dir = dir + turnRate;
+        }
+        dir %= 360;
+        if (dir < 0)
+            dir += 360;
+    }
+
     public void addPart(int numParts) {
         snakeLength += numParts;
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newPart = new SnakeBody(pane, tail);
+            LittleRedWagon newPart = new LittleRedWagon(pane, tail);
             tail = newPart;
         }
     }
@@ -81,11 +102,12 @@ public class SnakeHead extends GameEntity implements Animatable {
     public int getHealth() {
         return health;
     }
+
     public void removePart(int numParts) {
         snakeLength -= numParts;
         for (int i = 0; i < numParts; i++) {
-            if(tail instanceof SnakeBody){
-                GameEntity oldPart = ((SnakeBody) tail).getGameParent();
+            if (tail instanceof LittleRedWagon) {
+                GameEntity oldPart = ((LittleRedWagon) tail).getGameParent();
                 tail.destroy();
                 tail = oldPart;
             }
@@ -99,5 +121,18 @@ public class SnakeHead extends GameEntity implements Animatable {
     public void changeSpeed(int diff) {
         speed += diff;
         turnRate += diff;
+    }
+
+    private int getCurrentAnimationDirection() {
+        if (dir > 315 || dir < 45) return 0;
+        if (dir > 225) return 1;
+        if (dir > 135) return 2;
+        return 3;
+    }
+
+    private Rectangle2D getCurrentFrameView() {
+        return new Rectangle2D(animationFrame * Globals.PLAYER_SPRITE_SIZE,
+                animationDirection * Globals.PLAYER_SPRITE_SIZE,
+                Globals.PLAYER_SPRITE_SIZE, Globals.PLAYER_SPRITE_SIZE);
     }
 }

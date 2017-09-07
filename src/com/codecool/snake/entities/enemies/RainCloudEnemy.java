@@ -4,7 +4,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Dissapearable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.layout.Pane;
 
 public class RainCloudEnemy extends GameEntity implements Interactable, Dissapearable {
@@ -29,9 +29,9 @@ public class RainCloudEnemy extends GameEntity implements Interactable, Dissapea
     }
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(COOKIELOSS);
-        snakeHead.changeHealth(-HEALTHLOSS);
+    public void apply(GirlScout girlScout) {
+        girlScout.removePart(COOKIELOSS);
+        girlScout.changeHealth(-HEALTHLOSS);
         destroy();
     }
 

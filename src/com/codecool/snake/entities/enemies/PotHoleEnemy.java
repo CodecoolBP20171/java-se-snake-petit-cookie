@@ -4,7 +4,7 @@ import com.codecool.snake.entities.Dissapearable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.scene.layout.Pane;
 
 public class PotHoleEnemy extends GameEntity implements Interactable, Dissapearable {
@@ -26,8 +26,8 @@ public class PotHoleEnemy extends GameEntity implements Interactable, Dissapeara
 
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(COOKIELOSS);
+    public void apply(GirlScout girlScout) {
+        girlScout.removePart(COOKIELOSS);
         destroy();
     }
 

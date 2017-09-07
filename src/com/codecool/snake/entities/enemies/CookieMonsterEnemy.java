@@ -4,7 +4,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.PlayerFollowerGameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.entities.snakes.GirlScout;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
@@ -30,8 +30,8 @@ public class CookieMonsterEnemy extends PlayerFollowerGameEntity implements Inte
     }
 
     @Override
-    public void apply(SnakeHead snakeHead) {
-        snakeHead.removePart(COOKIELOSS);
+    public void apply(GirlScout girlScout) {
+        girlScout.removePart(COOKIELOSS);
         destroy();
     }
 

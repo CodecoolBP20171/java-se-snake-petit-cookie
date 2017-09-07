@@ -1,13 +1,16 @@
 package com.codecool.snake.entities.enemies;
 
 import com.codecool.snake.entities.Dissapearable;
+import com.codecool.snake.entities.Enemies;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-public class PotHoleEnemy extends GameEntity implements Interactable, Dissapearable {
+import javax.xml.stream.events.EndDocument;
+
+public class PotHoleEnemy extends GameEntity implements Interactable, Dissapearable, Enemies {
 
     private long deathTime;
     private final int COOKIELOSS = 1;

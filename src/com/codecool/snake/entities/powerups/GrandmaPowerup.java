@@ -7,7 +7,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-public class GrandmaPowerup extends RandomMoveableGameEntity implements Interactable, Animatable {
+public class GrandmaPowerup extends RandomMoveableGameEntity implements Interactable, Animatable, PowerUps {
 
     private final int COOKIEGAIN = 2;
     private final int FRAMESINONEDIRECTION = 60;

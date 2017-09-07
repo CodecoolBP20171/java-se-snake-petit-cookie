@@ -67,6 +67,7 @@ public class SnakeHead extends GameEntity implements Animatable {
             for (GameEntity gameEntity : Globals.gameObjects) {
                 gameEntity.destroy();
             }
+            Globals.gameOver = true;
         }
     }
 
@@ -82,12 +83,12 @@ public class SnakeHead extends GameEntity implements Animatable {
         return health;
     }
     public void removePart(int numParts) {
-        snakeLength -= numParts;
         for (int i = 0; i < numParts; i++) {
             if(tail instanceof SnakeBody){
                 GameEntity oldPart = ((SnakeBody) tail).getGameParent();
                 tail.destroy();
                 tail = oldPart;
+                snakeLength--;
             }
         }
     }

@@ -3,10 +3,11 @@ package com.codecool.snake.entities.powerups;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.PowerUps;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-public class TricyclePowerup extends GameEntity implements Interactable {
+public class TricyclePowerup extends GameEntity implements Interactable, PowerUps {
 
     private final int SPEEDGAIN = 1;
 

@@ -7,7 +7,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-public class CustomerPowerup  extends RandomMoveableGameEntity implements Interactable, Animatable {
+public class CustomerPowerup  extends RandomMoveableGameEntity implements Interactable, Animatable, PowerUps {
 
     private  final int COOKIELOSS = 1;
     private final int HEALTHGAIN = 10;

@@ -13,6 +13,7 @@ public class Snake extends Application {
     @Override
     public void start(Stage primaryStage) {
         Game game = new Game();
+        Globals.game = game;
 
         initHealthBar(game);
         initEndGameLabels(game);

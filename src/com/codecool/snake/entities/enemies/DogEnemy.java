@@ -6,7 +6,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-public class DogEnemy extends PlayerFollowerGameEntity implements Interactable, Animatable {
+public class DogEnemy extends PlayerFollowerGameEntity implements Interactable, Animatable, Enemies {
 
     private final int HEALTHLOSS = 20;
     private final int FRAMESINONEDIRECTION = 30;
